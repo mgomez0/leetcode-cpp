@@ -20,11 +20,11 @@ public:
     void dfs(TreeNode* root, int current_depth) {
             if(root != nullptr){
                 current_depth++;
-                if((root->getLeftChild() == nullptr) && (root->getRightChild()== nullptr) && (current_depth > max_depth)){
+                if((root->left == nullptr) && (root->right== nullptr) && (current_depth > max_depth)){
                    max_depth = current_depth;
                 }
-                dfs(root->getLeftChild(), current_depth);
-                dfs(root->getRightChild(), current_depth);
+                dfs(root->left, current_depth);
+                dfs(root->right, current_depth);
                 
             }
     };
@@ -41,8 +41,8 @@ int main(){
     TreeNode *root_right_left_ptr = new TreeNode(15);
     TreeNode *root_right_right_ptr = new TreeNode(7);
     TreeNode *root_ptr = new TreeNode(3, root_left_ptr, root_right_ptr);
-    root_right_ptr->setRightChild(root_right_right_ptr);
-    root_right_ptr->setLeftChild(root_right_left_ptr);
+    root_right_ptr->right = root_right_right_ptr;
+    root_right_ptr->left = root_right_left_ptr;
     Solution sol;
     std::cout << sol.maxDepth(root_ptr) << std::endl;
     
