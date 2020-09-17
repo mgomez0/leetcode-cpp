@@ -36,11 +36,50 @@ public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
         if(!root) return {};
         
-        int curr_level = 1;
-        deque<int> level;
+        int curr_level = 0;
+        deque<TreeNode*> dq;
+        vector<vector<int>> result;
+        vector<int> level;
+        TreeNode* front;
 
-        TreeNode* front = root;
+        dq.push_back(root);
 
+        
+        while(!dq.empty())
+        {
+            int sz = dq.size();
+            level.reserve(sz);
+            for(int i = 0; i < sz; i++)
+            {
+                front = dq.front();
+                dq.pop_front();
+                level.push_back(front->val);
+                if(front->left)
+                {   
+                    if(curr_level % 2 == 0)
+                    {    
+                    dq.push_front(front->left);
+                    } else{
+                        dq.push_back(front->left);
+                    }
+                }
+                if(front->right)
+                {
+                    if(curr_level % 2 == 0)
+                    {    
+                    dq.push_front(front->right);
+                    } else{
+                        dq.push_back(front->right);
+                    }       
+                }
+            }
+
+            result.push_back(level);
+            level.clear();
+            curr_level++;
+        } 
+
+        return result;
 
     }
 };

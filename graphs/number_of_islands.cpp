@@ -9,43 +9,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+class UnionFind{
+    private:
+
+        //number of elements in union find
+        int size;
+        
+        //used to track the sizes of each of the components
+        int sz[];
+
+        // id[i] points to parent of i, if id[i] = i then i is a root node
+        int id[];
+
+        // tracks the number of components in the union find
+        int num_components;
+
+    public:
+        UnionFind(int size){
+            UnionFind::this.size = numComponents = size;
+
+        }
+}
 class Solution {
 
 public:
-    int n;
-    vector<int> dx = {0,0,1,-1};
-    vector<int> dy = {1,-1,0,0};
     int numIslands(vector<vector<char>>& grid) {
-        int num_rows = grid.size();
-        int num_cols = grid[0].size();
-
-        for(int i = 0; i < num_rows; i++){
-            for(int j = 0; j < num_cols; j++){
-                if(grid[i][j]){
-                    floodFill(grid,i,j);
-                }
-            }
-        }
-    }
-
-    void floodFill(vector<vector<int>>& grid,
-                   int x,
-                   int y)
-    {
         
-        for(int i = 0; i < 4; i++){
-            int nx = x + dx[i];
-            int ny = y + dy[i];
-            if (isValid(nx,ny) && grid[nx][ny] && !island.count({nx,ny})){
-                floodFill(island, grid, nx, ny);
-            }
-        }    
-
     }
-
-    bool isValid(int x, int y){
-        return (x >= 0 && x < n && y >= 0 && y < n);
-    }
-
     
 };
